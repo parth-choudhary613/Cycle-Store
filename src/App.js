@@ -5,21 +5,16 @@ import Cart from "./Cart";
 import Home from "./Home";
 import Location from "./Location";
 
-
-
-;
 function App() {
   return (
     <Router>
+      {/* Navbar outside Routes so it appears on all pages */}
+      <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        {/* <Route exact path="/home" element={<Home />} /> */}
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/navbar" element={<Navbar/>} />
-        <Route path="/location" element={<Location/>} />
-    
-      
-
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/location" element={<Location />} />
       </Routes>
     </Router>
   );
