@@ -38,19 +38,23 @@ function Cards() {
                   style={{ color: "grey", borderRadius: "1px" }}
                 >
                   <img src={item.img} alt="" className="card-img-top" />
+               
                   <div className="card-body" style={{ backgroundColor: "black" }}>
-                    <h5 className="card-title">{item.title}</h5>
-                    <p className="card-text">{item.price}</p>
-                    <button
-                      className="btn btn-outline-light btn-sm"
-                      onClick={() => dispatch(addToCart(item))}
-                    >
-                      Add to Cart
-                    </button>
-                    <Link to="" className="btn btn-outline-light btn-sm ml-2">
-                      Read More
-                    </Link>
-                  </div>
+  <h5 className="card-title">{item.title}</h5>
+  <p className="card-text">{item.price}</p>
+  <div className="p-4">
+    <button
+      className="btn btn-outline-light btn-sm me-2" // Added margin-end class here
+      onClick={() => dispatch(addToCart(item))}
+    >
+      Add to Cart
+    </button>
+    <Link to="" className="btn btn-outline-light btn-sm">
+      Read More
+    </Link>
+  </div>
+</div>
+
                 </div>
               </div>
             ))}
