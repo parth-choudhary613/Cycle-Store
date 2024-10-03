@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaOpencart } from "react-icons/fa6";
@@ -9,159 +9,140 @@ import "./Navbar.css";
 
 function App() {
   const { cart, totalQuantity } = useSelector((state) => state.allCart);
-
   const dispatch = useDispatch();
+
+  // State to toggle the menu on small screens
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [cart, dispatch]); // Added dispatch to dependency array to avoid warning
+  }, [cart, dispatch]);
 
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
 
+  // Function to toggle the mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   function Navbar() {
     return (
-      <div className="NavBack">
-        <nav className="navbar navbar-expand-lg p-3" id="headerNav">
-          <div className="container-fluid">
-            <Link className="navbar-brand d-block d-lg-none" to="#">
-              <img src="./Images/logo.png" height="100vh" alt="" />
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+      <>
+        <div className="bg-[#1f2a39]">
+          <nav className="p-4 bg-black shadow-lg">
+            <div className="container mx-auto flex justify-between items-center">
+              <Link className="block lg:hidden border border-white" to="#">
+                <img src="./Images/logo.png" className="h-12" alt="Logo" />
+              </Link>
+              <button
+                className="lg:hidden text-white"
+                type="button"
+                aria-label="Toggle navigation"
+                onClick={toggleMenu} // Toggle the menu when clicked
+              >
+                <span className="text-xl">☰</span>
+              </button>
 
-            <div
-              className="collapse container-fluid navbar-collapse NavComponents"
-              style={{ fontWeight: "bold" }}
-              id="navbarNavDropdown"
-            >
-              <ul className="navbar-nav mx-auto">
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-up"
-                    data-aos-duration="1500"
-                    aria-current="page"
-                    to="/Home"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-down"
-                    data-aos-duration="1500"
-                    to="#"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-up"
-                    data-aos-duration="1500"
-                    to="#"
-                  >
-                    Accessories
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-down"
-                    data-aos-duration="1500"
-                    to="#"
-                  >
-                    Team
-                  </Link>
-                </li>
-                <li className="d-none d-lg-block">
-                  <Link className="mx-2" to="#">
-                    <img src="./Images/logo.png" height="100vh" alt="" />
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-up"
-                    data-aos-duration="1500"
-                    to="#"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-down"
-                    data-aos-duration="1500"
-                    to="/location"
-                  >
-                    Location
-                  </Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link mx-2 dropdown-toggle"
-                    to="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    data-aos="fade-up"
-                    data-aos-duration="1500"
-                  >
-                    Other Services
-                  </Link>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <Link className="dropdown-item" to="#">
-                        Blog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="#">
-                        About Us
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="#">
-                        Contact us
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link mx-2"
-                    data-aos="fade-down"
-                    to="/Cart"
-                  >
-                    <h3>
-                      <FaOpencart />({totalQuantity})
-                    </h3>
-                  </Link>
-                </li>
-              </ul>
+              {/* Centered Navbar Links */}
+              <div
+                className={`${
+                  isMenuOpen ? "block" : "hidden"
+                } lg:flex w-full justify-center items-center space-x-8 text-white`}
+                id="navbarNavDropdown"
+              >
+                <ul className="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-12">
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      data-aos="fade-up"
+                      data-aos-duration="1500"
+                      to="/Home"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      data-aos="fade-down"
+                      data-aos-duration="1500"
+                      to="#"
+                    >
+                      About
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      data-aos="fade-up"
+                      data-aos-duration="1500"
+                      to="#"
+                    >
+                      Accessories
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      data-aos="fade-down"
+                      data-aos-duration="1500"
+                      to="#"
+                    >
+                      Team
+                    </Link>
+                  </li>
+
+                  {/* Centered logo */}
+                  <li className="hidden lg:block">
+                    <Link to="#">
+                      <img
+                        src="./Images/logo.png"
+                        className="h-16 mx-auto"
+                        alt="Logo"
+                      />
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      data-aos="fade-up"
+                      data-aos-duration="1500"
+                      to="#"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      data-aos="fade-down"
+                      data-aos-duration="1500"
+                      to="/location"
+                    >
+                      Location
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link flex items-center"
+                      data-aos="fade-down"
+                      to="/Cart"
+                    >
+                      <h3 className="text-xl">
+                        <FaOpencart /> ({totalQuantity})
+                      </h3>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
+      </>
     );
   }
 

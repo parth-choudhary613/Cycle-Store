@@ -1,114 +1,56 @@
-/* @media screen and (min-width: 768px) {
-  #headerNav {
-    min-height: 80px;
-  }
-} */
-.NavBack {
-  background-image: linear-gradient(
-      274deg,
-      rgb(75, 68, 68) 0%,
-      rgb(75, 68, 68) 22%,
-      rgb(88, 84, 84) 22%,
-      rgb(88, 84, 84) 75%,
-      rgb(155, 150, 150) 75%,
-      rgb(155, 150, 150) 77%,
-      rgb(150, 150, 150) 77%,
-      rgb(150, 150, 150) 82%,
-      rgb(94, 88, 88) 82%,
-      rgb(94, 88, 88) 93%,
-      rgb(63, 57, 57) 93%,
-      rgb(63, 57, 57) 98%,
-      rgb(96, 88, 88) 98%,
-      rgb(96, 88, 88) 100%
-    ),
-    linear-gradient(
-      364deg,
-      rgb(75, 68, 68) 0%,
-      rgb(75, 68, 68) 22%,
-      rgb(88, 84, 84) 22%,
-      rgb(88, 84, 84) 75%,
-      rgb(155, 150, 150) 75%,
-      rgb(155, 150, 150) 77%,
-      rgb(150, 150, 150) 77%,
-      rgb(150, 150, 150) 82%,
-      rgb(94, 88, 88) 82%,
-      rgb(94, 88, 88) 93%,
-      rgb(63, 57, 57) 93%,
-      rgb(63, 57, 57) 98%,
-      rgb(96, 88, 88) 98%,
-      rgb(96, 88, 88) 100%
-    ),
-    linear-gradient(
-      22.5deg,
-      rgb(75, 68, 68) 0%,
-      rgb(75, 68, 68) 22%,
-      rgb(88, 84, 84) 22%,
-      rgb(88, 84, 84) 75%,
-      rgb(155, 150, 150) 75%,
-      rgb(155, 150, 150) 77%,
-      rgb(150, 150, 150) 77%,
-      rgb(150, 150, 150) 82%,
-      rgb(94, 88, 88) 82%,
-      rgb(94, 88, 88) 93%,
-      rgb(63, 57, 57) 93%,
-      rgb(63, 57, 57) 98%,
-      rgb(96, 88, 88) 98%,
-      rgb(96, 88, 88) 100%
-    ),
-    linear-gradient(
-      157.5deg,
-      rgb(75, 68, 68) 0%,
-      rgb(75, 68, 68) 22%,
-      rgb(88, 84, 84) 22%,
-      rgb(88, 84, 84) 75%,
-      rgb(155, 150, 150) 75%,
-      rgb(155, 150, 150) 77%,
-      rgb(150, 150, 150) 77%,
-      rgb(150, 150, 150) 82%,
-      rgb(94, 88, 88) 82%,
-      rgb(94, 88, 88) 93%,
-      rgb(63, 57, 57) 93%,
-      rgb(63, 57, 57) 98%,
-      rgb(96, 88, 88) 98%,
-      rgb(96, 88, 88) 100%
-    ),
-    linear-gradient(319deg, rgb(58, 58, 58), rgb(76, 76, 76));
-  background-blend-mode: overlay, overlay, overlay, overlay, normal;
-}
 
 .nav-link {
-  align-items: center;
-  appearance: none;
-  border-radius: 15px;
-  box-shadow: rgba(240, 240, 240, 0.4) 0 2px 4px,
-    rgba(240, 240, 240, 0.3) 0 7px 13px -3px, rgba(169, 169, 169, 0.5) 0 -3px 0;
-  box-sizing: border-box;
-  color: white;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono", monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  width: 200px;
+  text-decoration: none; 
+  color: white; 
+  padding: 50px 20px; 
+  border: 2px solid white;
+  transition: transform 0.4s ease, background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
+}
+
+.nav-link:hover {
+  background-color: transparent;
+  padding: 5px;
+  border: 1px solid white;
+  color: #1f2a39; 
+  transform: scale(1.1 ease); 
+  border-radius: 8px; 
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
+  
+}
+
+.nav-item {
   list-style: none;
   padding: 0 20px;
-  margin: 0 10px;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow 0.15s, transform 0.15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow, transform;
-  font-size: 20px;
 }
-#header {
-  background: url(https://images.unsplash.com/photo-1496147433903-1e62fdb6f4be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D)
-    center center / cover no-repeat;
+
+
+.nav-item:hover .nav-link {
+  transform: scale(1.1);
+  transition: transform 1s
 }
+
+.nav-item {
+  display: inline-block;
+}
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transition: all 0.4s ease;
+}
+
+
+
+
+
