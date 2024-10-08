@@ -74,8 +74,6 @@ function location()
 
     </div>
   </div>
-
-
 </section>
 
 </>
